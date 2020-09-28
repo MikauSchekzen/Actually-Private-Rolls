@@ -6,7 +6,7 @@
     "author": "Felix#6196, edited by Furyspark",
     "scripts": ["actually-private-rolls.js"],
     "url": "https://github.com/MikauSchekzen/Actually-Private-Rolls",
-    "manifest": "https://github.com/MikauSchekzen/Actually-Private-Rolls/master/module.json",
+    "manifest": "https://github.com/MikauSchekzen/Actually-Private-Rolls/raw/master/module.json",
     "download": "https://github.com/MikauSchekzen/Actually-Private-Rolls/archive/master.zip",
     "minimumCoreVersion": "0.5.5",
     "compatibleCoreVersion": "0.7.2"
