@@ -9,15 +9,11 @@ Hooks.on('init', () => {
     });
 });
 
-Hooks.on("createChatMessage", (app) => {
-    if (game.settings.get("actually-private-rolls", "hidePrivateRolls") && !app.visible) {
-        mergeObject(app.data, { "-=sound": null });
-    }
-});
-
 Hooks.on('renderChatMessage', (app, html, msg) => {
-    if (game.settings.get('actually-private-rolls', 'hidePrivateRolls') && !app.visible) {
-        html.hide();
+    if (game.settings.get('actually-private-rolls', 'hidePrivateRolls') && msg.whisperTo !== "") {
+        if (!game.user.isGM && game.user._id !== msg.author.data._id && msg.message.whisper.indexOf(game.user._id) === -1) {
+            html.hide();
+        }
     }
 });
 
@@ -27,3 +23,13 @@ Hooks.on("updateChatMessage", (message, data, diff, id) => {
         messageLi.show();
     }
 });
+
+const ChatLog_notify = ChatLog.prototype.notify;
+ChatLog.prototype.notify = function(message) {
+    if (game.settings.get("actually-private-rolls", "hidePrivateRolls") && message.data.whisper && message.data.whisper.length) {
+        if (message.data.whisper.filter(o => o._id === game.user._id).length === 0) {
+            mergeObject(message.data, { "-=sound": null });
+        }
+    }
+    ChatLog_notify.call(this, message);
+};
