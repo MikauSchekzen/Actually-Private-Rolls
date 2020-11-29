@@ -9,5 +9,5 @@
     "manifest": "https://github.com/MikauSchekzen/Actually-Private-Rolls/raw/master/module.json",
     "download": "https://github.com/MikauSchekzen/Actually-Private-Rolls/archive/master.zip",
     "minimumCoreVersion": "0.5.5",
-    "compatibleCoreVersion": "0.7.2"
+    "compatibleCoreVersion": "0.7.7"
 }
